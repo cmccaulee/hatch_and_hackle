@@ -5,8 +5,17 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        rocksalt: ["Rock Salt", "cursive"],
+      },
+    },
   },
-  plugins: [],
+  plugins: [
+    require('daisyui')],
+  daisyui: {
+    themes: [],
+  },
 }
+
 
