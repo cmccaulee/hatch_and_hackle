@@ -17,6 +17,7 @@ const FlySchema = new Schema(
         },
         hatch: {
             type: String,
+            required: [true, "Hatch is required"],
             validate: {
                 validator: v => ["Caddis", "Mayfly", "Midge", "Stonefly", "Terrestrial", "Baitfish", "Attractor", "Other"].includes(v),
                 message: "Please select a valid hatch from the dropdown"
@@ -31,6 +32,20 @@ const FlySchema = new Schema(
         image: {
             type: String,
             required: [true, "Image is required"],
+            validate: {
+                validator: v => v.match(/\.(jpeg|jpg|gif|png)$/) != null,
+                message: "Please provide a valid image URL"
+            }
+        },
+        heroText: {
+            type: String,
+            required: [false],
+            minLength: [20, "Hero text must be at least 20 characters long"],
+            maxLength: [600, "Hero text must be at most 600 characters long"]
+        },
+        heroImage: {
+            type: String,
+            required: [false],
             validate: {
                 validator: v => v.match(/\.(jpeg|jpg|gif|png)$/) != null,
                 message: "Please provide a valid image URL"

@@ -5,12 +5,12 @@ import dbConnect from './config/mongoose.config.js';
 import flyRoutes from './routes/fly.routes.js';
 
 
-const app = express();
-app.use(express.json(), cors());
-app.use('/api', flyRoutes);
 dotenv.config();
+const app = express();
 const PORT = process.env.PORT;
+app.use(express.json(), cors());
 dbConnect();
+app.use('/api', flyRoutes);
 
 // Error Normalization
 // Routes not found in App

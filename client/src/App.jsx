@@ -1,11 +1,18 @@
-import HeroCard from "./components/HeroCard";
-import TopNav from "./components/TopNav";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LandingPage from "./views/LandingPage";
+import FlyDetails from "./views/FlyDetails";
+import AllFlies from "./views/AllFlies";
 
 function App() {
     return (
         <>
-            <TopNav />
-            <HeroCard />
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<LandingPage />} />
+                    <Route path="/flies/:id" element={<FlyDetails />} />
+                    <Route path="/flies" element={<AllFlies />} />
+                </Routes>
+            </BrowserRouter>
         </>
     );
 }

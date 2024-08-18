@@ -1,15 +1,17 @@
+import { Link } from "react-router-dom";
+
 const TopNav = () => {
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 drop-shadow-md p-6">
             <div className="flex-1">
-                <a className="btn btn-ghost text-xl font-rocksalt">
+                <Link to={"/"} className="btn btn-ghost text-3xl font-rocksalt">
                     Hatch & Hackle
-                </a>
+                </Link>
             </div>
             <div className="flex-none">
                 <ul className="menu menu-horizontal px-1">
                     <li>
-                        <a>Home</a>
+                        <Link to={"/"}>Home</Link>
                     </li>
                     <li>
                         <a>Sign In</a>
