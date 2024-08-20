@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FlyService from "../services/flies.services";
 import ItemCard from "./ItemCard";
 

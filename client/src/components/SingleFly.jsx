@@ -1,9 +1,10 @@
 // !Would be best to extract the buttons into a separate component
 
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import TagIcon from "./TagIcon";
+
 import FlyService from "../services/flies.services";
+import TagIcon from "./TagIcon";
 
 const SingleFly = () => {
     const navigate = useNavigate();
@@ -15,9 +16,10 @@ const SingleFly = () => {
             setFly(response);
         });
     }, [id]);
+
     const deleteFly = () => {
         FlyService.delete(id).then(() => {
-            navigate("/");
+            navigate("/flies");
         });
     };
 
@@ -49,10 +51,14 @@ const SingleFly = () => {
                 {/* Buttons */}
                 <div className="flex justify-center">
                     <div className="flex flex-col gap-8 justify-center mr-20">
-                        <button className="btn btn-accent btn-wide drop-shadow-md text-white">
+                        <Link
+                            to={`/flies/update/${fly._id}`}
+                            className="btn btn-accent btn-wide drop-shadow-md text-white">
                             Edit Fly
-                        </button>
-                        <button className="btn btn-accent drop-shadow-md text-white">
+                        </Link>
+                        <button
+                            onClick={deleteFly}
+                            className="btn btn-accent drop-shadow-md text-white">
                             Delete Fly
                         </button>
                     </div>

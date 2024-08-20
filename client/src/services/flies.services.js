@@ -31,7 +31,7 @@ const FlyService = {
             return response.data;
         } catch (error) { throw error }
     },
-    "deleteOne": async (id) => {
+    "delete": async (id) => {
         try {
             const response = await http.delete(`/${id}`);
             return response.data;
