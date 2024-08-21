@@ -3,14 +3,19 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import dbConnect from './config/mongoose.config.js';
 import flyRoutes from './routes/fly.routes.js';
+import UserRouter from './routes/user.routes.js';
+import cookieParser from 'cookie-parser';
 
 
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT;
-app.use(express.json(), cors());
+
+app.use(cookieParser());
+app.use(express.json(), cors({ "credentials": true, "origin": "http://localhost:5173" }));
 dbConnect();
-app.use('/api', flyRoutes);
+app.use('/api/flies', flyRoutes);
+app.use('/api', UserRouter);
 
 // Error Normalization
 // Routes not found in App

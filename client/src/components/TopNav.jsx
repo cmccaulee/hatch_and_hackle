@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import UserService from "../services/users.services";
 
 const TopNav = () => {
+    const logoutUser = () => {
+        UserService.logoutUser();
+        console.log("User has logged out");
+    };
     return (
         <div className="navbar bg-base-100 drop-shadow-md p-6">
             <div className="flex-1">
@@ -14,7 +19,10 @@ const TopNav = () => {
                         <Link to={"/"}>Home</Link>
                     </li>
                     <li>
-                        <a>Sign In</a>
+                        <Link to={"/login"}>Sign In</Link>
+                    </li>
+                    <li>
+                        <button onClick={logoutUser}>Logout</button>
                     </li>
                     <li>
                         <details>
