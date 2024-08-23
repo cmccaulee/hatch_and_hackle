@@ -1,10 +1,32 @@
 import { Link } from "react-router-dom";
 import UserService from "../services/users.services";
+import { useEffect, useState } from "react";
 
 const TopNav = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        UserService.getCurrentUser()
+            .then((res) => {
+                if (res.data) {
+                    setIsLoggedIn(true);
+                    setUser(res.data);
+                }
+            })
+            .catch((err) => {
+                setIsLoggedIn(false);
+                setUser(null);
+            });
+    }, []);
+
     const logoutUser = () => {
-        UserService.logoutUser();
-        console.log("User has logged out");
+        UserService.logoutUser()
+            .then(() => {
+                setIsLoggedIn(false);
+                setUser(null);
+            })
+            .catch((err) => console.log(err));
     };
     return (
         <div className="navbar bg-base-100 drop-shadow-md p-6">
@@ -13,17 +35,25 @@ const TopNav = () => {
                     Hatch & Hackle
                 </Link>
             </div>
+
             <div className="flex-none">
                 <ul className="menu menu-horizontal px-1">
                     <li>
                         <Link to={"/"}>Home</Link>
                     </li>
-                    <li>
-                        <Link to={"/login"}>Sign In</Link>
-                    </li>
-                    <li>
-                        <button onClick={logoutUser}>Logout</button>
-                    </li>
+                    {isLoggedIn ? (
+                        <>
+                            <li> {user.firstName}</li>
+                            <li>
+                                <button onClick={logoutUser}>Logout</button>
+                            </li>
+                        </>
+                    ) : (
+                        <li>
+                            <Link to={"/login"}>Sign In</Link>
+                        </li>
+                    )}
+
                     <li>
                         <details>
                             <summary>Patterns</summary>

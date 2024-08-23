@@ -16,5 +16,10 @@ const UserService = {
             withCredentials: true,
         });
     },
+    getCurrentUser: () => {
+        return axios.get("http://localhost:8000/api/current_user", {
+            withCredentials: true,
+        });
+    },
 }
 export default UserService;

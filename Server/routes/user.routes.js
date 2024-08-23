@@ -12,4 +12,7 @@ UserRouter.route('/logout')
 UserRouter.route('/login')
     .post(UserController.login);
 
+UserRouter.route('/current_user')
+    .get(UserController.getCurrentUser);
+
 export default UserRouter;

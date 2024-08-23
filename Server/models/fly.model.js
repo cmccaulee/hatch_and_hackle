@@ -51,6 +51,10 @@ const FlySchema = new Schema(
                 message: "Please provide a valid image URL"
             }
         },
+        createdBy: {
+            type: String,
+            required: [true, "User ID is required"]
+        }
     },
     { timestamps: true }
 );

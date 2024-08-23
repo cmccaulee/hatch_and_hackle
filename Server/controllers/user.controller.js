@@ -43,6 +43,23 @@ const UserController = {
             res.status(400).json(err);
         }
     },
+    "getCurrentUser": async (req, res) => {
+        try {
+            const token = req.cookies.userToken || req.headers.authorization.split(' ')[1];
+            if (!token) {
+                return res.status(401).json({ message: 'No token provided' });
+            }
 
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            const user = await UserModel.findById(decoded.id).select('-password');
+            if (!user) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+
+            res.status(200).json(user);
+        } catch (error) {
+            res.status(500).json({ message: 'Server error', error });
+        }
+    },
 }
 export default UserController;
