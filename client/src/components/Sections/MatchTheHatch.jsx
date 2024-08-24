@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import HatchCard from "./HatchCard";
+import HatchCard from "../Cards/HatchCard";
 const MatchTheHatch = () => {
     return (
         <>

@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
-import UserService from "../services/users.services";
+import UserService from "../../services/users.services";
 import { useNavigate, Link } from "react-router-dom";
-import { LoggedInUserContext } from "../context/LoggedInUserContext";
+import { LoggedInUserContext } from "../../context/LoggedInUserContext";
 
 const LoginForm = () => {
     const navigate = useNavigate();

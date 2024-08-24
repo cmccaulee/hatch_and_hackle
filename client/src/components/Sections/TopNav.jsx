@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import UserService from "../services/users.services";
+import UserService from "../../services/users.services";
 import { useContext } from "react";
-import { LoggedInUserContext } from "../context/LoggedInUserContext";
+import { LoggedInUserContext } from "../../context/LoggedInUserContext";
 
 const TopNav = () => {
     const { user, setUser, isLoggedIn, setIsLoggedIn } =

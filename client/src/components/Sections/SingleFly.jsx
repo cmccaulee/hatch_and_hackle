@@ -1,11 +1,8 @@
-// !Would be best to extract the buttons into a separate component
-
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
-import UserService from "../services/users.services";
-import FlyService from "../services/flies.services";
-import TagIcon from "./TagIcon";
-import { LoggedInUserContext } from "../context/LoggedInUserContext";
+import FlyService from "../../services/flies.services";
+import TagIcon from "../Icons/TagIcon";
+import { LoggedInUserContext } from "../../context/LoggedInUserContext";
 
 const SingleFly = () => {
     const navigate = useNavigate();

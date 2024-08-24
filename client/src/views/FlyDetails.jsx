@@ -1,5 +1,5 @@
-import SingleFly from "../components/SingleFly";
-import TopNav from "../components/TopNav";
+import SingleFly from "../components/Sections/SingleFly";
+import TopNav from "../components/Sections/TopNav";
 
 const FlyDetails = () => {
     return (

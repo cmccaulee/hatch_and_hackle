@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
-import UserService from "../services/users.services";
+import UserService from "../../services/users.services";
 import { useNavigate } from "react-router-dom";
-import { LoggedInUserContext } from "../context/LoggedInUserContext";
+import { LoggedInUserContext } from "../../context/LoggedInUserContext";
 
 const RegisterForm = () => {
     const navigate = useNavigate();

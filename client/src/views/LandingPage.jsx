@@ -1,6 +1,6 @@
-import HeroCard from "../components/HeroCard";
-import MatchTheHatch from "../components/MatchTheHatch";
-import TopNav from "../components/TopNav";
+import HeroCard from "../components/Cards/HeroCard";
+import MatchTheHatch from "../components/Sections/MatchTheHatch";
+import TopNav from "../components/Sections/TopNav";
 
 const LandingPage = () => {
     return (

@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { LoggedInUserContext } from "../context/LoggedInUserContext";
+import { LoggedInUserContext } from "../../context/LoggedInUserContext";
 
 const ItemCard = (props) => {
     const { fly } = props;
-    const { user, setUser, isLoggedIn, setIsLoggedIn } =
-        useContext(LoggedInUserContext);
+    const { isLoggedIn } = useContext(LoggedInUserContext);
 
     return (
         <>

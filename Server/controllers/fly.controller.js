@@ -1,6 +1,6 @@
 import Fly from "../models/fly.model.js";
 
-async function create(req, res) {
+async function create(req, res, next) {
     try {
         const newFly = await Fly.create(req.body)
         res.json(newFly);
@@ -9,7 +9,7 @@ async function create(req, res) {
     }
 };
 
-async function getAll(req, res) {
+async function getAll(req, res, next) {
     try {
         const flies = await Fly.find();
         res.json(flies);
@@ -18,7 +18,7 @@ async function getAll(req, res) {
     }
 }
 
-async function getOne(req, res) {
+async function getOne(req, res, next) {
     try {
         const fly = await Fly.findById(req.params.id);
         res.json(fly);
@@ -27,7 +27,7 @@ async function getOne(req, res) {
     }
 }
 
-async function update(req, res) {
+async function update(req, res, next) {
     const options = { new: true, runValidators: true };
     try {
         const updatedFly = await Fly.findByIdAndUpdate(req.params.id, req.body, options);
@@ -36,7 +36,7 @@ async function update(req, res) {
         next(error);
     }
 }
-async function deleteOne(req, res) {
+async function deleteOne(req, res, next) {
     try {
         const deletedFly = await Fly.findByIdAndDelete(req.params.id);
         res.json(deletedFly);

@@ -5,6 +5,7 @@ import AllFlies from "./views/AllFlies";
 import Login from "./views/Login";
 import Register from "./views/Register";
 import { LoggedInUserProvider } from "./context/LoggedInUserContext";
+import CreateFly from "./views/CreateFly";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                         <Route path="/flies" element={<AllFlies />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
+                        <Route path="/flies/create" element={<CreateFly />} />
                     </Routes>
                 </LoggedInUserProvider>
             </BrowserRouter>

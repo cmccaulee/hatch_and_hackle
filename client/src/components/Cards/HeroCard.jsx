@@ -1,7 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import FlyService from "../services/flies.services";
-import TagIcon from "./TagIcon";
+import FlyService from "../../services/flies.services";
+import TagIcon from "../Icons/TagIcon";
 
 const HeroCard = () => {
     const navigate = useNavigate();

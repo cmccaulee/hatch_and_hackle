@@ -4,7 +4,7 @@ import UserService from "../services/users.services";
 export const LoggedInUserContext = createContext(undefined);
 
 export const LoggedInUserProvider = ({ children }) => {
-    const [user, setUser] = useState({ undefined });
+    const [user, setUser] = useState(undefined);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {

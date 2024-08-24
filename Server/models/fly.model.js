@@ -32,10 +32,10 @@ const FlySchema = new Schema(
         image: {
             type: String,
             required: [true, "Image is required"],
-            validate: {
-                validator: v => v.match(/\.(jpeg|jpg|gif|png)$/) != null,
-                message: "Please provide a valid image URL"
-            }
+            // validate: {
+            // validator: v => v.match(/\.(jpeg|jpg|gif|png)$/) != null,
+            //     message: "Please provide a valid image URL"
+            // }
         },
         heroText: {
             type: String,

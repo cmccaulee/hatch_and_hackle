@@ -17,9 +17,13 @@ const UserService = {
         });
     },
     getCurrentUser: () => {
-        return axios.get("http://localhost:8000/api/current_user", {
-            withCredentials: true,
-        });
-    },
+        try {
+            return axios.get("http://localhost:8000/api/current_user", {
+                withCredentials: true,
+            })
+        } catch (error) {
+            throw error
+        }
+    }
 }
 export default UserService;
