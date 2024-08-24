@@ -1,24 +1,11 @@
 import { Link } from "react-router-dom";
 import UserService from "../services/users.services";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { LoggedInUserContext } from "../context/LoggedInUserContext";
 
 const TopNav = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [user, setUser] = useState(null);
-
-    useEffect(() => {
-        UserService.getCurrentUser()
-            .then((res) => {
-                if (res.data) {
-                    setIsLoggedIn(true);
-                    setUser(res.data);
-                }
-            })
-            .catch((err) => {
-                setIsLoggedIn(false);
-                setUser(null);
-            });
-    }, []);
+    const { user, setUser, isLoggedIn, setIsLoggedIn } =
+        useContext(LoggedInUserContext);
 
     const logoutUser = () => {
         UserService.logoutUser()
@@ -43,9 +30,11 @@ const TopNav = () => {
                     </li>
                     {isLoggedIn ? (
                         <>
-                            <li> {user.firstName}</li>
+                            <li> </li>
                             <li>
-                                <button onClick={logoutUser}>Logout</button>
+                                <button onClick={logoutUser}>
+                                    Log out of {user.firstName}'s account
+                                </button>
                             </li>
                         </>
                     ) : (
@@ -53,26 +42,6 @@ const TopNav = () => {
                             <Link to={"/login"}>Sign In</Link>
                         </li>
                     )}
-
-                    <li>
-                        <details>
-                            <summary>Patterns</summary>
-                            <ul className="bg-base-100 rounded-t-none p-2">
-                                <li>
-                                    <a>Dry Flies</a>
-                                </li>
-                                <li>
-                                    <a>Nymphs</a>
-                                </li>
-                                <li>
-                                    <a>Streamers</a>
-                                </li>
-                                <li>
-                                    <a>Stillwater Flies</a>
-                                </li>
-                            </ul>
-                        </details>
-                    </li>
                 </ul>
             </div>
         </div>

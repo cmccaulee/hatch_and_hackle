@@ -1,7 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { LoggedInUserContext } from "../context/LoggedInUserContext";
 
 const ItemCard = (props) => {
     const { fly } = props;
+    const { user, setUser, isLoggedIn, setIsLoggedIn } =
+        useContext(LoggedInUserContext);
 
     return (
         <>
@@ -21,8 +25,16 @@ const ItemCard = (props) => {
                         </h1>
                         <ul className="flex justify-center gap-4">
                             <Link to={`/flies/${fly._id}`}>View</Link>
-                            <li>|</li>
-                            <Link to={`/flies/update/${fly._id}`}>Edit</Link>
+                            {isLoggedIn ? (
+                                <>
+                                    <li>|</li>
+                                    <Link to={`/flies/update/${fly._id}`}>
+                                        Edit
+                                    </Link>
+                                </>
+                            ) : (
+                                <></>
+                            )}
                         </ul>
                     </div>
                 </div>

@@ -1,33 +1,23 @@
 // !Would be best to extract the buttons into a separate component
 
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import UserService from "../services/users.services";
 import FlyService from "../services/flies.services";
 import TagIcon from "./TagIcon";
+import { LoggedInUserContext } from "../context/LoggedInUserContext";
 
 const SingleFly = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const [fly, setFly] = useState({});
-    const [user, setUser] = useState(null);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const { user, setUser, isLoggedIn, setIsLoggedIn } =
+        useContext(LoggedInUserContext);
 
     useEffect(() => {
         FlyService.getOne(id).then((response) => {
             setFly(response);
         });
-        UserService.getCurrentUser()
-            .then((res) => {
-                if (res.data) {
-                    setIsLoggedIn(true);
-                    setUser(res.data);
-                }
-            })
-            .catch((err) => {
-                setIsLoggedIn(false);
-                setUser(null);
-            });
     }, [id]);
 
     const deleteFly = () => {

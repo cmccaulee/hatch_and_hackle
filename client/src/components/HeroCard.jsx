@@ -5,7 +5,7 @@ import TagIcon from "./TagIcon";
 
 const HeroCard = () => {
     const navigate = useNavigate();
-    const id = "66c0ebcc607137956c822109";
+    const id = "66c8b843ddf3816ebbcfd4b5";
     const [fly, setFly] = useState({});
 
     useEffect(() => {
@@ -40,7 +40,7 @@ const HeroCard = () => {
                         <div className="flex justify-center">
                             <Link
                                 className="btn btn-secondary btn-glass opacity-75"
-                                to={`/flies/66c0ebcc607137956c822109`}>
+                                to={`/flies/66c8b843ddf3816ebbcfd4b5`}>
                                 View The Pattern
                             </Link>
                         </div>

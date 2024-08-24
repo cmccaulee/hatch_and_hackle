@@ -4,7 +4,7 @@ import TopNav from "../components/TopNav";
 const FlyDetails = () => {
     return (
         <>
-            <body className="min-h-screen">
+            <div className="min-h-screen">
                 <div
                     className="absolute inset-0"
                     style={{
@@ -24,7 +24,7 @@ const FlyDetails = () => {
                     }}></div>
                 <TopNav />
                 <SingleFly />
-            </body>
+            </div>
         </>
     );
 };

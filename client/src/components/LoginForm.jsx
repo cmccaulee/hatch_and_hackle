@@ -1,29 +1,31 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import UserService from "../services/users.services";
 import { useNavigate, Link } from "react-router-dom";
+import { LoggedInUserContext } from "../context/LoggedInUserContext";
 
 const LoginForm = () => {
     const navigate = useNavigate();
+    const { setUser, setIsLoggedIn } = useContext(LoggedInUserContext);
 
-    const [user, setUser] = useState({
-        email: "",
-        password: "",
-    });
+    const [user, setUserState] = useState({ email: "", password: "" });
 
     const changeHandler = (e) => {
         const { name, value } = e.target;
-        setUser((prevUserValue) => ({ ...prevUserValue, [name]: value }));
+        setUserState((prevUserValue) => ({ ...prevUserValue, [name]: value }));
     };
 
     const submitHandler = (e) => {
         e.preventDefault();
         UserService.login(user)
             .then((response) => {
-                console.log(response);
-                navigate("/");
+                setIsLoggedIn(true);
+                setUser(response.data);
             })
             .catch((error) => {
                 console.log(error);
+            })
+            .finally(() => {
+                navigate("/");
             });
     };
 
