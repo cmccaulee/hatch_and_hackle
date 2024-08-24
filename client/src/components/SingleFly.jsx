@@ -2,7 +2,7 @@
 
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import UserService from "../services/users.services";
 import FlyService from "../services/flies.services";
 import TagIcon from "./TagIcon";
 
@@ -10,11 +10,24 @@ const SingleFly = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const [fly, setFly] = useState({});
+    const [user, setUser] = useState(null);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
         FlyService.getOne(id).then((response) => {
             setFly(response);
         });
+        UserService.getCurrentUser()
+            .then((res) => {
+                if (res.data) {
+                    setIsLoggedIn(true);
+                    setUser(res.data);
+                }
+            })
+            .catch((err) => {
+                setIsLoggedIn(false);
+                setUser(null);
+            });
     }, [id]);
 
     const deleteFly = () => {
@@ -50,18 +63,20 @@ const SingleFly = () => {
                 </div>
                 {/* Buttons */}
                 <div className="flex justify-center">
-                    <div className="flex flex-col gap-8 justify-center mr-20">
-                        <Link
-                            to={`/flies/update/${fly._id}`}
-                            className="btn btn-accent btn-wide drop-shadow-md text-white">
-                            Edit Fly
-                        </Link>
-                        <button
-                            onClick={deleteFly}
-                            className="btn btn-accent drop-shadow-md text-white">
-                            Delete Fly
-                        </button>
-                    </div>
+                    {isLoggedIn && user && fly.createdBy === user._id ? (
+                        <div className="flex flex-col gap-8 justify-center mr-20">
+                            <Link
+                                to={`/flies/update/${fly._id}`}
+                                className="btn btn-accent btn-wide drop-shadow-md text-white">
+                                Edit Fly
+                            </Link>
+                            <button
+                                onClick={deleteFly}
+                                className="btn btn-accent drop-shadow-md text-white">
+                                Delete Fly
+                            </button>
+                        </div>
+                    ) : null}
                 </div>
             </div>
         </>
