@@ -39,7 +39,7 @@ const HeroCard = () => {
                         <div className="flex justify-center">
                             <Link
                                 className="btn btn-secondary btn-glass opacity-75"
-                                to={`/flies/66c8b843ddf3816ebbcfd4b5`}>
+                                to={`/flies/${fly._id}`}>
                                 View The Pattern
                             </Link>
                         </div>
