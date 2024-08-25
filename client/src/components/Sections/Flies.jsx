@@ -15,7 +15,7 @@ const Flies = () => {
 
     return (
         <>
-            <div className="flex gap-8">
+            <div className="flex gap-8 flex-wrap">
                 {flies.map((fly, index) => (
                     <div key={index}>
                         <ItemCard fly={fly} />

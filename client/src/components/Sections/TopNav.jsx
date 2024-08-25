@@ -35,14 +35,12 @@ const TopNav = () => {
                         <>
                             <li> </li>
                             <li>
-                                <button onClick={logoutUser}>
-                                    Log out of {user.firstName}'s account
-                                </button>
+                                <button onClick={logoutUser}>Log Out</button>
                             </li>
                         </>
                     ) : (
                         <li>
-                            <Link to={"/login"}>Sign In</Link>
+                            <Link to={"/login"}>Log In</Link>
                         </li>
                     )}
                 </ul>
