@@ -8,17 +8,19 @@ const AllFlies = () => {
     const { isLoggedIn } = useContext(LoggedInUserContext);
     return (
         <>
-            <TopNav />{" "}
-            <div className="container mx-8 mt-8 flex justify-between">
-                <h1 className="text-5xl">Trusted Fly Patterns</h1>
-                {isLoggedIn ? (
-                    <Link to={"/flies/create"} className="btn btn-primary">
-                        Create Your Own
-                    </Link>
-                ) : null}
-            </div>
-            <div className="mx-8 mt-8">
-                <Flies />
+            <TopNav />
+            <div className="mx-20 flex flex-col justify-center">
+                <div className=" mx-8 mt-8 flex justify-between">
+                    <h1 className="text-5xl">Trusted Fly Patterns</h1>
+                    {isLoggedIn ? (
+                        <Link to={"/flies/create"} className="btn btn-primary">
+                            Create Your Own
+                        </Link>
+                    ) : null}
+                </div>
+                <div className=" mt-8 flex justify-around">
+                    <Flies />
+                </div>
             </div>
         </>
     );

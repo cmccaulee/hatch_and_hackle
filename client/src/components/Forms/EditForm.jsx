@@ -32,36 +32,44 @@ const EditForm = () => {
 
     return (
         <>
-            <h2>{fly.name}</h2>
-            <form onSubmit={(e) => submitHandler(e)}>
-                {errors && (
-                    <p>
-                        {errors.name} {errors.statusCode}
-                    </p>
-                )}
-                <label htmlFor="name">
-                    Fly Name:
-                    <input
-                        type="text"
-                        value={fly.name}
-                        name="name"
-                        id="name"
-                        onChange={(e) => changeHandler(e)}
-                    />
-                    {errors.validationErrors && (
-                        <p className="text-red-400">
-                            {errors.validationErrors.name}
+            <div className="flex justify-center mt-5">
+                <form
+                    onSubmit={(e) => submitHandler(e)}
+                    className="card bg-base-100 w-auto shadow-xl gap-2 px-4 py-8">
+                    {errors && (
+                        <p>
+                            {errors.name} {errors.statusCode}
                         </p>
                     )}
-                </label>
-                <label htmlFor="type">
-                    Fly Type:
+                    <h2 className="text-2xl ml-6 text-center">
+                        Edit {fly.name}
+                    </h2>
+                    <label
+                        htmlFor="name"
+                        className="input input-bordered flex items-center gap-2">
+                        Fly Name:
+                        <input
+                            type="text"
+                            value={fly.name}
+                            name="name"
+                            id="name"
+                            onChange={(e) => changeHandler(e)}
+                        />
+                        {errors.validationErrors && (
+                            <p className="text-red-400">
+                                {errors.validationErrors.name}
+                            </p>
+                        )}
+                    </label>
                     <select
-                        type="option"
+                        className="select select-bordered w-full"
+                        type="option" // May need to adjust this line
                         value={fly.type}
                         name="type"
                         id="type"
+                        placeHolder="Pick A Type"
                         onChange={(e) => changeHandler(e)}>
+                        <option value={null}>Pick A Type</option>
                         <option value="Dry">Dry</option>
                         <option value="Wet">Wet</option>
                         <option value="Nymph">Nymph</option>
@@ -74,15 +82,15 @@ const EditForm = () => {
                             {errors.validationErrors.type}
                         </p>
                     )}
-                </label>
-                <label htmlFor="hatch">
-                    Hatch:
                     <select
-                        type="option"
+                        className="select select-bordered w-full"
+                        type="option" // May need to adjust this line
                         value={fly.hatch}
                         name="hatch"
                         id="hatch"
+                        placeHolder="Pick A Hatch"
                         onChange={(e) => changeHandler(e)}>
+                        <option value={null}>Pick A Hatch</option>
                         <option value="Caddis">Caddis</option>
                         <option value="Mayfly">Mayfly</option>
                         <option value="Stonefly">Stonefly</option>
@@ -97,11 +105,29 @@ const EditForm = () => {
                             {errors.validationErrors.hatch}
                         </p>
                     )}
-                </label>
-                <label htmlFor="description">
-                    Fly Description:
-                    <input
-                        type="text"
+                    <label
+                        htmlFor="image"
+                        className="input input-bordered flex items-center gap-2">
+                        Fly Image:
+                        <input
+                            placeholder="URL only for now"
+                            type="text"
+                            value={fly.image}
+                            name="image"
+                            id="image"
+                            onChange={(e) => changeHandler(e)}
+                        />
+                        {errors.validationErrors && (
+                            <p className="text-red-400">
+                                {errors.validationErrors.image}
+                            </p>
+                        )}
+                    </label>
+
+                    <textarea
+                        className="textarea textarea-bordered textarea-lg w-full"
+                        placeholder="Description"
+                        type="textarea"
                         value={fly.description}
                         name="description"
                         id="description"
@@ -112,27 +138,12 @@ const EditForm = () => {
                             {errors.validationErrors.description}
                         </p>
                     )}
-                </label>
-                <label htmlFor="image">
-                    Fly Image:
-                    <input
-                        type="text"
-                        value={fly.image}
-                        name="image"
-                        id="image"
-                        onChange={(e) => changeHandler(e)}
-                    />
-                    {errors.validationErrors && (
-                        <p className="text-red-400">
-                            {errors.validationErrors.image}
-                        </p>
-                    )}
-                </label>
-                <button type="submit" className="btn btn-primary">
-                    {" "}
-                    Update Fly
-                </button>
-            </form>
+                    <button type="submit" className="btn btn-primary">
+                        {" "}
+                        Update Fly
+                    </button>
+                </form>
+            </div>
         </>
     );
 };
