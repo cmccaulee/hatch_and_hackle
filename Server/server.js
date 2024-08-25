@@ -14,8 +14,8 @@ const PORT = process.env.PORT;
 app.use(cookieParser());
 app.use(express.json(), cors({ "credentials": true, "origin": "http://localhost:5173" }));
 dbConnect();
-app.use('/api/flies', flyRoutes);
 app.use('/api', UserRouter);
+app.use('/api/flies', flyRoutes);
 
 // Error Normalization
 // Routes not found in App

@@ -6,6 +6,7 @@ import { LoggedInUserContext } from "../../context/LoggedInUserContext";
 const RegisterForm = () => {
     const navigate = useNavigate();
     const { setUser, setIsLoggedIn } = useContext(LoggedInUserContext);
+    const [errors, setErrors] = useState({});
     const [user, setUserState] = useState({
         firstName: "",
         lastName: "",
@@ -25,23 +26,25 @@ const RegisterForm = () => {
             .then((response) => {
                 setIsLoggedIn(true);
                 setUser(response.data);
-                console.log(response);
-            })
-            .catch((error) => {
-                console.log(error);
                 navigate("/");
             })
-            .finally(() => {
-                navigate("/");
+            .catch((err) => {
+                console.log(err);
+                setErrors(err.response.data);
             });
     };
 
     return (
         <>
-            <h2>Register</h2>
-            <form onSubmit={submitHandler}>
-                <div>
-                    <label htmlFor="firstName">
+            <div className="flex justify-center mt-5">
+                <form
+                    className="card bg-base-100 w-auto shadow-xl gap-2 px-4 py-8"
+                    onSubmit={(e) => submitHandler(e)}>
+                    {errors && <p className="text-red-500">{errors.name}</p>}
+                    <h2 className="text-2xl ml-6 text-center">Register</h2>
+                    <label
+                        htmlFor="firstName"
+                        className="input input-bordered flex items-center gap-2">
                         First Name:
                         <input
                             type="text"
@@ -50,9 +53,15 @@ const RegisterForm = () => {
                             id="firstName"
                             onChange={(e) => changeHandler(e)}
                         />
+                        {errors.validationErrors && (
+                            <p className="text-red-400">
+                                {errors.validationErrors.firstName}
+                            </p>
+                        )}
                     </label>
-
-                    <label htmlFor="lastName">
+                    <label
+                        htmlFor="lastName"
+                        className="input input-bordered flex items-center gap-2">
                         Last Name:
                         <input
                             type="text"
@@ -61,8 +70,15 @@ const RegisterForm = () => {
                             id="lastName"
                             onChange={(e) => changeHandler(e)}
                         />
+                        {errors.validationErrors && (
+                            <p className="text-red-400">
+                                {errors.validationErrors.lastName}
+                            </p>
+                        )}
                     </label>
-                    <label htmlFor="email">
+                    <label
+                        htmlFor="email"
+                        className="input input-bordered flex items-center gap-2">
                         Email:
                         <input
                             type="email"
@@ -71,8 +87,15 @@ const RegisterForm = () => {
                             id="email"
                             onChange={(e) => changeHandler(e)}
                         />
+                        {errors.validationErrors && (
+                            <p className="text-red-400">
+                                {errors.validationErrors.email}
+                            </p>
+                        )}
                     </label>
-                    <label htmlFor="password">
+                    <label
+                        htmlFor="password"
+                        className="input input-bordered flex items-center gap-2">
                         Password:
                         <input
                             type="password"
@@ -81,8 +104,15 @@ const RegisterForm = () => {
                             id="password"
                             onChange={(e) => changeHandler(e)}
                         />
+                        {errors.validationErrors && (
+                            <p className="text-red-400">
+                                {errors.validationErrors.password}
+                            </p>
+                        )}
                     </label>
-                    <label htmlFor="confirmPassword">
+                    <label
+                        htmlFor="confirmPassword"
+                        className="input input-bordered flex items-center gap-2">
                         Confirm Password:
                         <input
                             type="password"
@@ -91,12 +121,17 @@ const RegisterForm = () => {
                             id="confirmPassword"
                             onChange={(e) => changeHandler(e)}
                         />
+                        {errors.validationErrors && (
+                            <p className="text-red-400">
+                                {errors.validationErrors.confirmPassword}
+                            </p>
+                        )}
                     </label>
-                </div>
-                <button className="btn btn-primary" type="submit">
-                    Submit
-                </button>
-            </form>
+                    <button className=" btn btn-primary" type="submit">
+                        Submit
+                    </button>
+                </form>
+            </div>
         </>
     );
 };

@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
 const UserController = {
-    "register": async (req, res) => {
+    "register": async (req, res, next) => {
         try {
             const newUser = await UserModel.create(req.body);
             const userToken = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
@@ -11,15 +11,15 @@ const UserController = {
                 .cookie('userToken', userToken, { "httpOnly": true })
                 .status(201)
                 .json(newUser);
-        } catch (err) {
-            res.status(400).json(err);
+        } catch (error) {
+            next(error);
         }
     },
-    "logout": async (req, res) => {
+    "logout": async (req, res, next) => {
         res.clearCookie('userToken');
         return res.status(200).json({ message: "Logged out successfully" });
     },
-    "login": async (req, res) => {
+    "login": async (req, res, next) => {
         try {
             const user = await UserModel.findOne({ "email": req.body.email });
 
@@ -39,11 +39,11 @@ const UserController = {
                 .status(200)
                 .json(user);
         }
-        catch (err) {
-            res.status(400).json(err);
+        catch (error) {
+            next(error);
         }
     },
-    "getCurrentUser": async (req, res) => {
+    "getCurrentUser": async (req, res, next) => {
         try {
             const token = req.cookies.userToken || req.headers.authorization.split(' ')[1];
             if (!token) {
@@ -58,7 +58,7 @@ const UserController = {
 
             res.status(200).json(user);
         } catch (error) {
-            res.status(500).json({ message: 'Server error', error });
+            next(error);
         }
     },
 }

@@ -44,31 +44,31 @@ const NewFlyForm = () => {
 
     return (
         <>
-            <h2>Create a Fly</h2>
-            <form onSubmit={(e) => submitHandler(e)}>
-                {errors && (
-                    <p>
-                        {errors.name} {errors.statusCode}
-                    </p>
-                )}
-                <label htmlFor="name">
-                    Fly Name:
-                    <input
-                        type="text"
-                        value={fly.name}
-                        name="name"
-                        id="name"
-                        onChange={(e) => changeHandler(e)}
-                    />
-                    {errors.validationErrors && (
-                        <p className="text-red-400">
-                            {errors.validationErrors.name}
-                        </p>
-                    )}
-                </label>
-                <label htmlFor="type">
-                    Fly Type:
+            <div className="flex justify-center mt-5">
+                <form
+                    className="card bg-base-100 w-auto shadow-xl gap-2 px-4 py-8"
+                    onSubmit={(e) => submitHandler(e)}>
+                    {errors && <p className="text-red-500">{errors.name}</p>}
+                    <h2 className="text-2xl ml-6 text-center">Create a Fly</h2>
+                    <label
+                        htmlFor="name"
+                        className="input input-bordered flex items-center gap-2">
+                        Fly Name:
+                        <input
+                            type="text"
+                            value={fly.name}
+                            name="name"
+                            id="name"
+                            onChange={(e) => changeHandler(e)}
+                        />
+                        {errors.validationErrors && (
+                            <p className="text-red-400">
+                                {errors.validationErrors.name}
+                            </p>
+                        )}
+                    </label>
                     <select
+                        className="select select-bordered w-full"
                         type="option" // May need to adjust this line
                         value={fly.type}
                         name="type"
@@ -88,10 +88,8 @@ const NewFlyForm = () => {
                             {errors.validationErrors.type}
                         </p>
                     )}
-                </label>
-                <label htmlFor="hatch">
-                    Hatch:
                     <select
+                        className="select select-bordered w-full"
                         type="option" // May need to adjust this line
                         value={fly.hatch}
                         name="hatch"
@@ -113,11 +111,29 @@ const NewFlyForm = () => {
                             {errors.validationErrors.hatch}
                         </p>
                     )}
-                </label>
-                <label htmlFor="description">
-                    Fly Description:
-                    <input
-                        type="text"
+                    <label
+                        htmlFor="image"
+                        className="input input-bordered flex items-center gap-2">
+                        Fly Image:
+                        <input
+                            placeholder="URL only for now"
+                            type="text"
+                            value={fly.image}
+                            name="image"
+                            id="image"
+                            onChange={(e) => changeHandler(e)}
+                        />
+                        {errors.validationErrors && (
+                            <p className="text-red-400">
+                                {errors.validationErrors.image}
+                            </p>
+                        )}
+                    </label>
+
+                    <textarea
+                        className="textarea textarea-bordered textarea-lg w-full"
+                        placeholder="Description"
+                        type="textarea"
                         value={fly.description}
                         name="description"
                         id="description"
@@ -128,27 +144,14 @@ const NewFlyForm = () => {
                             {errors.validationErrors.description}
                         </p>
                     )}
-                </label>
-                <label htmlFor="image">
-                    Fly Image:
-                    <input
-                        type="text"
-                        value={fly.image}
-                        name="image"
-                        id="image"
-                        onChange={(e) => changeHandler(e)}
-                    />
-                    {errors.validationErrors && (
-                        <p className="text-red-400">
-                            {errors.validationErrors.image}
-                        </p>
-                    )}
-                </label>
-                <button type="submit" className="btn btn-primary">
-                    {" "}
-                    Create Fly
-                </button>
-            </form>
+
+                    <div className="flex justify-center">
+                        <button type="submit" className="btn btn-primary">
+                            Create Fly
+                        </button>
+                    </div>
+                </form>
+            </div>
         </>
     );
 };
