@@ -1,5 +1,5 @@
-import Flies from "../components/Sections/Flies";
-import TopNav from "../components/Sections/TopNav";
+import Flies from "../../components/Sections/Flies";
+import TopNav from "../../components/Sections/TopNav";
 import { Link } from "react-router-dom";
 
 const AllFlies = () => {

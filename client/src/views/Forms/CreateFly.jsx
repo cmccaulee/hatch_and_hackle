@@ -1,4 +1,4 @@
-import NewFlyForm from "../components/Forms/NewFlyForm";
+import NewFlyForm from "../../components/Forms/NewFlyForm";
 
 const CreateFly = () => {
     return (

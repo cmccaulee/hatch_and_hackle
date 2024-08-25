@@ -1,11 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LandingPage from "./views/LandingPage";
-import FlyDetails from "./views/FlyDetails";
-import AllFlies from "./views/AllFlies";
-import Login from "./views/Login";
-import Register from "./views/Register";
+import LandingPage from "./views/Retrievals/LandingPage";
+import FlyDetails from "./views/Retrievals/FlyDetails";
+import AllFlies from "./views/Retrievals/AllFlies";
+import Login from "./views/Forms/Login";
+import Register from "./views/Forms/Register";
 import { LoggedInUserProvider } from "./context/LoggedInUserContext";
-import CreateFly from "./views/CreateFly";
+import CreateFly from "./views/Forms/CreateFly";
+import UpdateFly from "./views/Forms/UpdateFly";
 
 function App() {
     return (
@@ -19,6 +20,10 @@ function App() {
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/flies/create" element={<CreateFly />} />
+                        <Route
+                            path="/flies/update/:id"
+                            element={<UpdateFly />}
+                        />
                     </Routes>
                 </LoggedInUserProvider>
             </BrowserRouter>

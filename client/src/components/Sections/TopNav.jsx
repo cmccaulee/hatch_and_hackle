@@ -28,6 +28,9 @@ const TopNav = () => {
                     <li>
                         <Link to={"/"}>Home</Link>
                     </li>
+                    <li>
+                        <Link to={"/flies"}>View All Patterns</Link>
+                    </li>
                     {isLoggedIn ? (
                         <>
                             <li> </li>
