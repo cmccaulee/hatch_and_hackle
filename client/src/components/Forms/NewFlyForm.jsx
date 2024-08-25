@@ -73,8 +73,9 @@ const NewFlyForm = () => {
                         value={fly.type}
                         name="type"
                         id="type"
+                        placeHolder="Pick A Type"
                         onChange={(e) => changeHandler(e)}>
-                        <option selected>Pick A Hatch</option>
+                        <option value={null}>Pick A Type</option>
                         <option value="Dry">Dry</option>
                         <option value="Wet">Wet</option>
                         <option value="Nymph">Nymph</option>
@@ -95,8 +96,9 @@ const NewFlyForm = () => {
                         value={fly.hatch}
                         name="hatch"
                         id="hatch"
+                        placeHolder="Pick A Hatch"
                         onChange={(e) => changeHandler(e)}>
-                        <option selected>Pick A Hatch</option>
+                        <option value={null}>Pick A Hatch</option>
                         <option value="Caddis">Caddis</option>
                         <option value="Mayfly">Mayfly</option>
                         <option value="Stonefly">Stonefly</option>

@@ -57,12 +57,11 @@ const EditForm = () => {
                 <label htmlFor="type">
                     Fly Type:
                     <select
-                        type="option" // May need to adjust this line
+                        type="option"
                         value={fly.type}
                         name="type"
                         id="type"
                         onChange={(e) => changeHandler(e)}>
-                        <option selected>Pick A Hatch</option>
                         <option value="Dry">Dry</option>
                         <option value="Wet">Wet</option>
                         <option value="Nymph">Nymph</option>
@@ -79,12 +78,11 @@ const EditForm = () => {
                 <label htmlFor="hatch">
                     Hatch:
                     <select
-                        type="option" // May need to adjust this line
+                        type="option"
                         value={fly.hatch}
                         name="hatch"
                         id="hatch"
                         onChange={(e) => changeHandler(e)}>
-                        <option selected>Pick A Hatch</option>
                         <option value="Caddis">Caddis</option>
                         <option value="Mayfly">Mayfly</option>
                         <option value="Stonefly">Stonefly</option>

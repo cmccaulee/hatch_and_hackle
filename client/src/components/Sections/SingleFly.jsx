@@ -8,8 +8,7 @@ const SingleFly = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const [fly, setFly] = useState({});
-    const { user, setUser, isLoggedIn, setIsLoggedIn } =
-        useContext(LoggedInUserContext);
+    const { user, isLoggedIn } = useContext(LoggedInUserContext);
 
     useEffect(() => {
         FlyService.getOne(id).then((response) => {

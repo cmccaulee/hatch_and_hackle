@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import FlyService from "../../services/flies.services";
 import ItemCard from "../Cards/ItemCard";
 
