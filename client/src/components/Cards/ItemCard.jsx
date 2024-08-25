@@ -4,7 +4,7 @@ import { LoggedInUserContext } from "../../context/LoggedInUserContext";
 
 const ItemCard = (props) => {
     const { fly } = props;
-    const { isLoggedIn } = useContext(LoggedInUserContext);
+    const { isLoggedIn, user } = useContext(LoggedInUserContext);
 
     return (
         <>
@@ -24,7 +24,7 @@ const ItemCard = (props) => {
                         </h1>
                         <ul className="flex justify-center gap-4">
                             <Link to={`/flies/${fly._id}`}>View</Link>
-                            {isLoggedIn ? (
+                            {isLoggedIn && user._id === fly.createdBy ? (
                                 <>
                                     <li>|</li>
                                     <Link to={`/flies/update/${fly._id}`}>

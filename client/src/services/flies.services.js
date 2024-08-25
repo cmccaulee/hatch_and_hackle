@@ -5,9 +5,10 @@ const http = axios.create({
 });
 
 const FlyService = {
-    "getAll": async () => {
+    "getAll": async (hatch) => {
         try {
-            const response = await http.get('/');
+            const endPoint = hatch ? `/hatch/${hatch}` : '/';
+            const response = await http.get(endPoint);
             return response.data
         }
         catch (error) { throw error }

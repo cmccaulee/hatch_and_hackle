@@ -24,6 +24,10 @@ function App() {
                             path="/flies/update/:id"
                             element={<UpdateFly />}
                         />
+                        <Route
+                            path="/flies/hatch/:hatch"
+                            element={<AllFlies />}
+                        />
                     </Routes>
                 </LoggedInUserProvider>
             </BrowserRouter>

@@ -9,4 +9,6 @@ router.route('/:id')
     .get(flyController.getOne)
     .put(flyController.update)
     .delete(flyController.deleteOne);
+router.route('/hatch/:hatch')
+    .get(flyController.getAllFiltered);
 export default router;

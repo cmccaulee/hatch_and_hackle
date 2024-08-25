@@ -15,17 +15,17 @@ const MatchTheHatch = () => {
                 <div className="flex justify-center my-8">
                     <div className="flex sm:flex-row justify-between flex-col gap-10 md:max-w-5xl">
                         <HatchCard
-                            hatch="Terrestrials"
+                            hatch="Terrestrial"
                             image="https://storage.googleapis.com/hatchandhackleimages/grasshopper.png"
                             tileColor="#FCCFB1"
                         />
                         <HatchCard
-                            hatch="Caddisflies"
+                            hatch="Caddis"
                             image="https://storage.googleapis.com/hatchandhackleimages/caddisfly.png"
                             tileColor="#D3A771"
                         />
                         <HatchCard
-                            hatch="Mayflies"
+                            hatch="Mayfly"
                             image="https://storage.googleapis.com/hatchandhackleimages/mayflie.png"
                             tileColor="#E2E1B2"
                         />

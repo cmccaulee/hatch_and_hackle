@@ -1,10 +1,9 @@
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import FlyService from "../../services/flies.services";
 import TagIcon from "../Icons/TagIcon";
 
 const HeroCard = () => {
-    const navigate = useNavigate();
     const id = "66c8b843ddf3816ebbcfd4b5";
     const [fly, setFly] = useState({});
 
@@ -45,7 +44,6 @@ const HeroCard = () => {
                             </Link>
                         </div>
                     </div>
-
                     {/* Image ------------------------------------------*/}
                     <img
                         src={fly.heroImage}

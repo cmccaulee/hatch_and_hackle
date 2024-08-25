@@ -27,6 +27,16 @@ async function getOne(req, res, next) {
     }
 }
 
+async function getAllFiltered(req, res, next) {
+    const filter = { hatch: req.params.hatch }
+    try {
+        const flies = await Fly.find(filter);
+        res.json(flies);
+    } catch (error) {
+        next(error);
+    }
+}
+
 async function update(req, res, next) {
     const options = { new: true, runValidators: true };
     try {
@@ -46,4 +56,4 @@ async function deleteOne(req, res, next) {
     }
 }
 
-export { create, getAll, getOne, update, deleteOne };
+export { create, getAll, getOne, update, deleteOne, getAllFiltered };

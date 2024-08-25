@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import FlyService from "../../services/flies.services";
 import ItemCard from "../Cards/ItemCard";
+import { useParams } from "react-router-dom";
 
 const Flies = () => {
     const [flies, setFlies] = useState([]);
+    const { hatch } = useParams();
 
     useEffect(() => {
-        FlyService.getAll().then((response) => {
+        FlyService.getAll(hatch).then((response) => {
             setFlies(response);
         });
     }, []);
