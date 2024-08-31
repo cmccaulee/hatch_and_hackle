@@ -13,7 +13,6 @@ const FlyDetails = () => {
                         backgroundSize: "cover",
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "center",
-
                         filter: "blur(2px)",
                         zIndex: "-1",
                     }}></div>
